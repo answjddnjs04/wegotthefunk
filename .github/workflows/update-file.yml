@@ -1,0 +1,23 @@
+name: Update File
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run a script to update the file
+        run: |
+          echo "새로운 코드를 파일에 추가합니다." >> 경로/파일이름.txt
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add 경로/파일이름.txt
+          git commit -m '자동 업데이트: 새로운 코드 추가'
+          git push
